@@ -1,58 +1,35 @@
-(define (domain lunar)
-    (:requirements :strips :typing)
+(define (problem lunar-mission-1)
+  (:domain lunar)
 
-    ; -------------------------------
-    ; Types
-    ; -------------------------------
+  (:objects
+    lander1 - lander
+    rover1 - rover
+    w1 w2 w3 w4 w5 w6 - waypoint
+    image5 scan3 - data
+    sample1 - sample
+  )
 
-    ; EXAMPLE
+  (:init
+    (lander_at lander1 w2) 
+    (belongs_to rover1 lander1)
+    
+    ; Figure 2 connections
+    (connected w1 w2)
+    (connected w1 w4)
+    (connected w2 w3)
+    (connected w3 w5)
+    (connected w5 w1)
 
-    ; (:types
-    ;     parent_type
-    ;     child_type - parent_type
+    (data_at image5 w5)
+    (data_at scan3 w3)
+    (sample_at sample1 w1)
+  )
 
-    ; )
-    (:types
-
+  (:goal
+    (and
+      (data_transmitted image5 lander1)
+      (data_transmitted scan3 lander1)
+      (sample_stored sample1 lander1)
     )
-
-    ; -------------------------------
-    ; Predicates
-    ; -------------------------------
-
-    ; EXAMPLE
-
-    ; (:predicates
-    ;     (no_arity_predicate)
-    ;     (one_arity_predicate ?p - parameter_type)
-    ; )
-
-    (:predicates
-
-    )
-
-    ; -------------------------------
-    ; Actions
-    ; -------------------------------
-
-    ; EXAMPLE
-
-    ; (:action action-template
-    ;     :parameters (?p - parameter_type)
-    ;     :precondition (and
-    ;         (one_arity_predicate ?p)
-    ;     )
-    ;     :effect 
-    ;     (and 
-    ;         (no_arity_predicate)
-    ;         (not (one_arity_predicate ?p))
-    ;     )
-    ; )
-
-    (:action action_name
-        :parameters ()
-        :precondition (and)
-        :effect (and)
-    )
-
+  )
 )
