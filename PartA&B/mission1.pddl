@@ -4,32 +4,31 @@
   (:objects
     lander1 - lander
     rover1 - rover
-    w1 w2 w3 w4 w5 w6 - waypoint
-    image5 scan3 - data
-    sample1 - sample
+    w1 w2 w3 w4 w5 - waypoint
   )
 
   (:init
-    (lander_at lander1 w2) 
     (belongs_to rover1 lander1)
-    
-    ; Figure 2 connections
+    (lander_at lander1 w2)
+    (aboard rover1)
+    (mem_free rover1)
+    (hands_free rover1)
+    (lander_free lander1)
+
+    (sample_at w1)
+
+    ; Figure 2
     (connected w1 w2)
     (connected w1 w4)
     (connected w2 w3)
+    (connected w4 w3)
     (connected w3 w5)
     (connected w5 w1)
-
-    (data_at image5 w5)
-    (data_at scan3 w3)
-    (sample_at sample1 w1)
   )
 
-  (:goal
-    (and
-      (data_transmitted image5 lander1)
-      (data_transmitted scan3 lander1)
-      (sample_stored sample1 lander1)
-    )
-  )
+  (:goal (and
+    (image_saved lander1 w5)
+    (scan_saved lander1 w3)
+    (sample_stored lander1 w1)
+  ))
 )

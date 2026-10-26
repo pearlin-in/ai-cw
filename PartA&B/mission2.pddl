@@ -5,23 +5,29 @@
     lander1 lander2 - lander
     rover1 rover2 - rover
     w1 w2 w3 w4 w5 w6 - waypoint
-    image3 image2 - data
-    scan4 scan6 - data
-    sample5 sample1 - sample
   )
 
   (:init
-    ; rover 1 starts out already deployed
-    (lander_at lander1 w2)
+    ; Lander 1 / Rover 1 (already deployed at w2)
     (belongs_to rover1 lander1)
-    (deployed rover1)
+    (lander_at lander1 w2)
     (at rover1 w2)
+    (mem_free rover1)
+    (hands_free rover1)
+    (lander_free lander1)
 
-    ; rover 2 starts inside lander 2
-    (lander_at lander2 w6) 
+    ; Lander 2 / Rover 2 (aboard, lander lands at w6)
     (belongs_to rover2 lander2)
+    (lander_at lander2 w6)
+    (aboard rover2)
+    (mem_free rover2)
+    (hands_free rover2)
+    (lander_free lander2)
 
-    ; figure 3 connections
+    (sample_at w5)
+    (sample_at w1)
+
+    ; Figure 3
     (connected w1 w2)
     (connected w2 w1)
     (connected w2 w3)
@@ -31,23 +37,14 @@
     (connected w5 w3)
     (connected w5 w6)
     (connected w6 w4)
-
-    (data_at image3 w3)
-    (data_at scan4 w4)
-    (data_at image2 w2)
-    (data_at scan6 w6)
-    (sample_at sample5 w5)
-    (sample_at sample1 w1)
   )
 
-  (:goal
-    (and
-      (data_transmitted image3 lander1)
-      (data_transmitted scan6 lander1)
-      (data_transmitted scan4 lander2)
-      (data_transmitted image2 lander2)
-      (sample_stored sample5 lander1)
-      (sample_stored sample1 lander2)
-    )
-  )
+  (:goal (and
+    (image_saved lander1 w3)
+    (scan_saved lander2 w4)
+    (image_saved lander2 w2)
+    (scan_saved lander1 w6)
+    (sample_stored lander1 w5)
+    (sample_stored lander2 w1)
+  ))
 )
