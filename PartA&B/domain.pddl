@@ -4,22 +4,26 @@
   (:types rover lander waypoint)
 
   (:predicates
+    ;;Rover's state
     (belongs_to ?r - rover ?l - lander)
-    (aboard ?r - rover)
+    (aboard ?r - rover)                 
     (at ?r - rover ?w - waypoint)
     (lander_at ?l - lander ?w - waypoint)
     (connected ?a - waypoint ?b - waypoint)
 
-    (mem_free ?r - rover)
+    ;;data memory constraints
+    (mem_free ?r - rover)                   ;rover can only hold one unsent data item
     (has_image ?r - rover ?w - waypoint)
     (has_scan ?r - rover ?w - waypoint)
     (image_saved ?l - lander ?w - waypoint)
     (scan_saved ?l - lander ?w - waypoint)
-
+    
+    
+    ;;Sample handling
     (sample_at ?w - waypoint)
-    (hands_free ?r - rover)
+    (hands_free ?r - rover)                 ;rover can only carry one sample
     (has_sample ?r - rover ?w - waypoint)
-    (lander_free ?l - lander)
+    (lander_free ?l - lander)               ;lander can only store one sample
     (sample_stored ?l - lander ?w - waypoint)
   )
 

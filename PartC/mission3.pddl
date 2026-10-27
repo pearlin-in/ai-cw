@@ -9,6 +9,8 @@
   )
 
   (:init
+
+    ;;Rover 1 and Lander 1 setup
     (belongs_to rover1 lander1)
     (lander_at lander1 w2)
     (at rover1 w2)
@@ -16,6 +18,7 @@
     (hands_free rover1)
     (lander_free lander1)
 
+    ;;Rover 2 and lander 2 setup
     (belongs_to rover2 lander2)
     (lander_at lander2 w6)
     (aboard rover2)
@@ -26,6 +29,7 @@
     (sample_at w5)
     (sample_at w1)
 
+    ;;Directed map connections
     (connected w1 w2)
     (connected w2 w1)
     (connected w2 w3)
@@ -36,6 +40,7 @@
     (connected w5 w6)
     (connected w6 w4)
 
+    ;;initial positions of astronauts
     (astronaut_of alice lander1)
     (astronaut_of bob lander2)
     (in_dock alice)
@@ -43,11 +48,11 @@
   )
 
   (:goal (and
-    (image_saved lander1 w3)
+    (image_saved lander1 w3)     ;goals for data transmission
     (scan_saved lander2 w4)
     (image_saved lander2 w2)
     (scan_saved lander1 w6)
-    (sample_stored lander1 w5)
+    (sample_stored lander1 w5)   ;goals for collecting and storing data
     (sample_stored lander2 w1)
   ))
 )
