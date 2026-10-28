@@ -1,0 +1,22 @@
+Puzzle,Method,Avg time (ms),Steps,Backtracks,Status
+easy1.txt,Plain backtracking,18.83,4209,4157,Solved
+easy1.txt,Forward checking,6.50,334,465,Solved
+easy1.txt,Forward checking + MRV,1.25,52,0,Solved
+medium1.txt,Plain backtracking,0.77,201,151,Solved
+medium1.txt,Forward checking,1.66,77,46,Solved
+medium1.txt,Forward checking + MRV,1.17,50,0,Solved
+hard1.txt,Plain backtracking,30000.05,6097686,6097653,Timeout (>30.0s)
+hard1.txt,Forward checking,30000.22,816086,1366762,Timeout (>30.0s)
+hard1.txt,Forward checking + MRV,13.33,420,417,Solved
+expert1.txt,Plain backtracking,69.19,8970,8911,Solved
+expert1.txt,Forward checking,163.21,3906,5363,Solved
+expert1.txt,Forward checking + MRV,9.27,210,159,Solved
+killer.txt,Plain backtracking,30000.06,4891612,4891568,Timeout (>30.0s)
+killer.txt,Forward checking,30000.27,950184,1481813,Timeout (>30.0s)
+killer.txt,Forward checking + MRV,1318.95,39223,45203,Solved
+unsolvable.txt,Plain backtracking,0.87,333,332,No solution
+unsolvable.txt,Forward checking,1.76,74,127,No solution
+unsolvable.txt,Forward checking + MRV,0.35,3,3,No solution
+unsolvable2.txt,Plain backtracking,0.01,1,0,No solution
+unsolvable2.txt,Forward checking,0.22,0,0,No solution
+unsolvable2.txt,Forward checking + MRV,0.14,0,0,No solution
