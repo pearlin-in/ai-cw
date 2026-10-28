@@ -1,9 +1,10 @@
 Puzzle,Empty cells,Avg time (ms),Steps,Backtracks,Status
-easy1.txt,51,1.53,52,0,Solved
-medium1.txt,49,1.75,50,0,Solved
-hard1.txt,64,8.37,420,417,Solved
-expert1.txt,58,5.20,210,159,Solved
-killer.txt,64,933.11,39223,45203,Solved
-unsolvable.txt,50,0.14,3,3,No solution
-unsolvable2.txt,72,0.04,0,0,No solution
+easy1.csv,51,1.38,52,0,Solved
+easy1.txt,51,1.25,52,0,Solved
+expert1.txt,58,5.14,210,159,Solved
+hard1.txt,64,9.71,420,417,Solved
 invalid.txt,-,-,-,-,"ERROR: Digit 5 at row 1, col 1 repeats in its row, column or box"
+killer.txt,64,893.39,39223,45203,Solved
+medium1.txt,49,1.24,50,0,Solved
+unsolvable.txt,50,0.29,3,3,No solution
+unsolvable2.txt,72,0.06,0,0,No solution
