@@ -1,25 +1,25 @@
 Puzzle,Method,Avg time (ms),Steps,Backtracks,Status
-easy1.csv,Plain backtracking,29.45,4209,4157,Solved
-easy1.csv,Forward checking,7.96,334,465,Solved
-easy1.csv,Forward checking + MRV,2.22,52,0,Solved
-easy1.txt,Plain backtracking,17.59,4209,4157,Solved
-easy1.txt,Forward checking,7.13,334,465,Solved
-easy1.txt,Forward checking + MRV,1.32,52,0,Solved
-expert1.txt,Plain backtracking,38.96,8970,8911,Solved
-expert1.txt,Forward checking,93.00,3906,5363,Solved
-expert1.txt,Forward checking + MRV,4.55,210,159,Solved
-hard1.txt,Plain backtracking,30000.05,5250826,5250797,Timeout (>30.0s)
-hard1.txt,Forward checking,30000.63,605497,1011039,Timeout (>30.0s)
-hard1.txt,Forward checking + MRV,36.21,420,417,Solved
-killer.txt,Plain backtracking,30000.03,4182750,4182718,Timeout (>30.0s)
-killer.txt,Forward checking,30000.66,598923,940513,Timeout (>30.0s)
-killer.txt,Forward checking + MRV,1983.46,39223,45203,Solved
-medium1.txt,Plain backtracking,2.65,201,151,Solved
-medium1.txt,Forward checking,6.68,77,46,Solved
-medium1.txt,Forward checking + MRV,4.41,50,0,Solved
-unsolvable.txt,Plain backtracking,2.97,333,332,No solution
-unsolvable.txt,Forward checking,7.53,74,127,No solution
-unsolvable.txt,Forward checking + MRV,0.69,3,3,No solution
-unsolvable2.txt,Plain backtracking,0.02,1,0,No solution
-unsolvable2.txt,Forward checking,0.18,0,0,No solution
-unsolvable2.txt,Forward checking + MRV,0.18,0,0,No solution
+easy1.csv,Plain backtracking,18.23,4209,4157,Solved
+easy1.csv,Forward checking,7.75,334,465,Solved
+easy1.csv,Forward checking + MRV,1.63,52,0,Solved
+easy1.txt,Plain backtracking,17.84,4209,4157,Solved
+easy1.txt,Forward checking,7.99,334,465,Solved
+easy1.txt,Forward checking + MRV,1.25,52,0,Solved
+expert1.txt,Plain backtracking,40.46,8970,8911,Solved
+expert1.txt,Forward checking,88.37,3906,5363,Solved
+expert1.txt,Forward checking + MRV,5.83,210,159,Solved
+hard1.txt,Plain backtracking,30000.03,6441027,6440992,Timeout (>30.0s)
+hard1.txt,Forward checking,22835.00,1029095,1715419,Solved
+hard1.txt,Forward checking + MRV,22.15,420,417,Solved
+killer.txt,Plain backtracking,30000.03,7054973,7054939,Timeout (>30.0s)
+killer.txt,Forward checking,30000.14,1405645,2201973,Timeout (>30.0s)
+killer.txt,Forward checking + MRV,840.22,39223,45203,Solved
+medium1.txt,Plain backtracking,0.76,201,151,Solved
+medium1.txt,Forward checking,2.30,77,46,Solved
+medium1.txt,Forward checking + MRV,1.33,50,0,Solved
+unsolvable.txt,Plain backtracking,1.31,333,332,No solution
+unsolvable.txt,Forward checking,1.59,74,127,No solution
+unsolvable.txt,Forward checking + MRV,0.28,3,3,No solution
+unsolvable2.txt,Plain backtracking,0.01,1,0,No solution
+unsolvable2.txt,Forward checking,0.09,0,0,No solution
+unsolvable2.txt,Forward checking + MRV,0.11,0,0,No solution

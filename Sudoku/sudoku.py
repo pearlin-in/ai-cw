@@ -1,13 +1,3 @@
-"""Sudoku solver using backtracking search and CSP techniques.
-
-The chosen approach is backtracking + forward checking + MRV (mode "fc_mrv").
-Two weaker modes, plain backtracking ("bt") and forward checking with a fixed
-cell order ("fc"), are included only as baselines for the quantitative
-comparison in the report.
-
-Usage: see usage() at the bottom of this file, or README.md.
-"""
-
 import sys
 import time
 import csv
@@ -43,22 +33,15 @@ def build_peers():
 
 
 PEERS = build_peers()
-
-
-# ---------- Solver ----------
-
 class SearchTimeout(Exception):
     """Raised inside the search when the time limit is exceeded."""
 
 
 class Solver:
-    """Backtracking Sudoku solver with three selectable strategies.
-
-    bt     : plain backtracking, first empty cell, values checked on assignment
-    fc     : backtracking + forward checking, first empty cell
+    """three modes :
+    bt     : plain backtracking
+    fc     : backtracking + forward checking
     fc_mrv : backtracking + forward checking + minimum remaining values
-
-    The grid passed in must already be valid (see validate_grid).
     """
 
     def __init__(self, grid, mode=DEFAULT_MODE, time_limit=None):
@@ -74,8 +57,6 @@ class Solver:
         self.deadline = None
 
     def solve(self):
-        """Solve the puzzle. Returns True if solved, False if no solution
-        (or if the time limit was hit; check self.timed_out)."""
         self.steps = 0
         self.backtracks = 0
         self.timed_out = False
@@ -102,8 +83,6 @@ class Solver:
             return False
 
     def forward_check(self, domains, r, c, v):
-        """Remove v from the domain of every empty peer of (r, c).
-        Returns False if some peer is left with an empty domain."""
         for pr, pc in PEERS[(r, c)]:
             if self.grid[pr][pc] == 0 and v in domains[pr][pc]:
                 domains[pr][pc].remove(v)
@@ -112,7 +91,6 @@ class Solver:
         return True
 
     def pick_cell(self, domains):
-        """Choose the next empty cell: first in row order, or MRV in fc_mrv."""
         if self.mode != "fc_mrv":
             for r in range(9):
                 for c in range(9):
@@ -170,9 +148,6 @@ class Solver:
             self.backtracks += 1
         return False
 
-
-# ---------- Checking and input ----------
-
 def is_valid_solution(grid, original):
     """True if grid is a complete Sudoku solution that keeps all givens."""
     for r in range(9):
@@ -194,7 +169,7 @@ def is_valid_solution(grid, original):
 
 
 def validate_grid(grid):
-    """Check values are 0-9 and no given digit repeats. Returns (ok, message)."""
+    """Check values are 0-9 and no given digit repeats."""
     for r in range(9):
         for c in range(9):
             v = grid[r][c]
@@ -208,8 +183,6 @@ def validate_grid(grid):
 
 
 def load_puzzle(filepath):
-    """Read a 9x9 grid from a .txt (spaces) or .csv (commas) file.
-    Returns (grid, "Valid") or (None, error message)."""
     if not os.path.exists(filepath):
         return None, f"File not found: {filepath}"
 
@@ -241,7 +214,7 @@ def load_puzzle(filepath):
 
 
 def print_grid(grid):
-    """Print the grid with box separators; empty cells shown as '.'."""
+    """Print the grid with box separators"""
     for r in range(9):
         if r % 3 == 0 and r != 0:
             print("------+-------+------")
@@ -254,19 +227,12 @@ def print_grid(grid):
 
 
 def find_puzzle_files():
-    """Return the .txt / .csv files in this script's folder (full paths, sorted),
-    leaving out the output files this program writes."""
     folder = os.path.dirname(os.path.abspath(__file__))
     skip = ("results.csv", "comparison.csv")
     return sorted(os.path.join(folder, f) for f in os.listdir(folder)
                   if f.lower().endswith((".txt", ".csv")) and f not in skip)
 
-
-# ---------- Evaluation ----------
-
 def measure(grid, mode, runs=3, time_limit=TIME_LIMIT):
-    """Solve grid `runs` times with `mode`.
-    Returns (avg time in ms, steps, backtracks, status)."""
     times = []
     solver = None
     solved = False
@@ -276,7 +242,7 @@ def measure(grid, mode, runs=3, time_limit=TIME_LIMIT):
         solved = solver.solve()
         times.append((time.perf_counter() - start) * 1000)
         if solver.timed_out:
-            break  # no point repeating a timed-out run
+            break  # no repeating a timed-out run
 
     # steps and backtracks are the same every run, so use the last one
     if solver.timed_out:
@@ -341,12 +307,8 @@ def run_comparison(files, runs=3, time_limit=TIME_LIMIT):
     print("Results saved to comparison.csv")
 
 
-# ---------- GUI ----------
-
 def launch_gui():
-    """Tkinter front end: pick a puzzle file and a method, then press Solve.
-    The board is read-only. Solving runs in a background thread so the
-    window stays responsive."""
+    """Tkinter front end"""
     import threading
     import tkinter as tk
     from tkinter import ttk
@@ -363,7 +325,7 @@ def launch_gui():
     except tk.TclError:
         pass
 
-    # --- selectors ---
+    #selectors 
     top = ttk.Frame(root, padding=(12, 12, 12, 4))
     top.pack(fill="x")
     ttk.Label(top, text="Puzzle").grid(row=0, column=0, sticky="w")
@@ -377,7 +339,6 @@ def launch_gui():
     puzzle_box.grid(row=1, column=0, sticky="w")
     method_box.grid(row=1, column=1, sticky="w", padx=(10, 0))
 
-    # --- read-only board (labels, not entries) ---
     shades = ("#ffffff", "#e6edf7")  # alternate shading per 3x3 box
     board = tk.Frame(root, bg="#2b2b2b", padx=3, pady=3)
     board.pack(padx=12, pady=8)
@@ -386,14 +347,13 @@ def launch_gui():
         for c in range(9):
             lbl = tk.Label(board, text="", width=3, font=("Arial", 18, "bold"),
                            bg=shades[(r // 3 + c // 3) % 2])
-            # a wider gap shows the dark background as the box borders
             lbl.grid(row=r, column=c, ipady=6,
                      padx=(3 if c % 3 == 0 and c else 1, 0),
                      pady=(3 if r % 3 == 0 and r else 1, 0))
             cells[r][c] = lbl
 
     def show_grid(grid, givens=None):
-        """Fill the board; digits not in `givens` (the solver's) are shown in blue."""
+        """Fill the board; digits not in `givens` (the solver's) in blue."""
         for r in range(9):
             for c in range(9):
                 v = grid[r][c]
@@ -401,7 +361,6 @@ def launch_gui():
                 cells[r][c].config(text=str(v) if v else "",
                                    fg="black" if is_given else "#1a5fd0")
 
-    # --- buttons and status ---
     bottom = ttk.Frame(root, padding=(12, 0, 12, 12))
     bottom.pack(fill="x")
     buttons = ttk.Frame(bottom)
@@ -477,9 +436,6 @@ def launch_gui():
     load_selected()
     root.mainloop()
 
-
-# ---------- Main ----------
-
 def usage():
     print("Usage:")
     print("  python sudoku_solver.py <puzzle_file> [--mode bt|fc|fc_mrv]   solve one puzzle (.txt or .csv)")
@@ -515,7 +471,6 @@ def solve_file(path, mode):
 
 
 def pop_option(args, name, default):
-    """Remove `name value` from args and return value (or default)."""
     if name in args:
         i = args.index(name)
         if i + 1 >= len(args):
