@@ -1,25 +1,25 @@
 Puzzle,Method,Avg time (ms),Steps,Backtracks,Status
-easy1.csv,Plain backtracking,18.23,4209,4157,Solved
-easy1.csv,Forward checking,7.75,334,465,Solved
-easy1.csv,Forward checking + MRV,1.63,52,0,Solved
-easy1.txt,Plain backtracking,17.84,4209,4157,Solved
-easy1.txt,Forward checking,7.99,334,465,Solved
-easy1.txt,Forward checking + MRV,1.25,52,0,Solved
-expert1.txt,Plain backtracking,40.46,8970,8911,Solved
-expert1.txt,Forward checking,88.37,3906,5363,Solved
-expert1.txt,Forward checking + MRV,5.83,210,159,Solved
-hard1.txt,Plain backtracking,30000.03,6441027,6440992,Timeout (>30.0s)
-hard1.txt,Forward checking,22835.00,1029095,1715419,Solved
-hard1.txt,Forward checking + MRV,22.15,420,417,Solved
-killer.txt,Plain backtracking,30000.03,7054973,7054939,Timeout (>30.0s)
-killer.txt,Forward checking,30000.14,1405645,2201973,Timeout (>30.0s)
-killer.txt,Forward checking + MRV,840.22,39223,45203,Solved
-medium1.txt,Plain backtracking,0.76,201,151,Solved
+easy1.csv,Plain backtracking,16.26,4209,4157,Solved
+easy1.csv,Forward checking,7.24,334,465,Solved
+easy1.csv,Forward checking + MRV,1.28,52,0,Solved
+easy1.txt,Plain backtracking,17.09,4209,4157,Solved
+easy1.txt,Forward checking,7.66,334,465,Solved
+easy1.txt,Forward checking + MRV,1.51,52,0,Solved
+expert1.txt,Plain backtracking,40.03,8970,8911,Solved
+expert1.txt,Forward checking,87.62,3906,5363,Solved
+expert1.txt,Forward checking + MRV,5.02,210,159,Solved
+hard1.txt,Plain backtracking,30000.03,5646290,5646256,Timeout (>30.0s)
+hard1.txt,Forward checking,21259.20,1029095,1715419,Solved
+hard1.txt,Forward checking + MRV,7.94,420,417,Solved
+killer.txt,Plain backtracking,30000.03,7286836,7286803,Timeout (>30.0s)
+killer.txt,Forward checking,30000.12,1544390,2419595,Timeout (>30.0s)
+killer.txt,Forward checking + MRV,758.74,39223,45203,Solved
+medium1.txt,Plain backtracking,0.96,201,151,Solved
 medium1.txt,Forward checking,2.30,77,46,Solved
-medium1.txt,Forward checking + MRV,1.33,50,0,Solved
-unsolvable.txt,Plain backtracking,1.31,333,332,No solution
-unsolvable.txt,Forward checking,1.59,74,127,No solution
-unsolvable.txt,Forward checking + MRV,0.28,3,3,No solution
-unsolvable2.txt,Plain backtracking,0.01,1,0,No solution
-unsolvable2.txt,Forward checking,0.09,0,0,No solution
-unsolvable2.txt,Forward checking + MRV,0.11,0,0,No solution
+medium1.txt,Forward checking + MRV,1.93,50,0,Solved
+unsolvable.txt,Plain backtracking,1.10,333,332,No solution
+unsolvable.txt,Forward checking,1.53,74,127,No solution
+unsolvable.txt,Forward checking + MRV,0.15,3,3,No solution
+unsolvable2.txt,Plain backtracking,0.00,1,0,No solution
+unsolvable2.txt,Forward checking,0.08,0,0,No solution
+unsolvable2.txt,Forward checking + MRV,0.14,0,0,No solution
